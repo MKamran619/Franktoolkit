@@ -1,0 +1,62 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.app .btn-group{
+  text-align: center;
+}
+.app label.LoadBtn{
+  display: inline-block;
+  cursor: pointer;
+}
+.app label.LoadBtn .btn{
+  padding: 10px;
+  font-size: 1.1rem;
+  display: block;
+  margin: 5px auto;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+.app #my_video {
+  display: block;
+  margin: 10px auto;
+  height: 80vh;
+  max-width: 100%;
+}
+.app .frames-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.app .frames-grid > * {
+  width: 32%;
+  margin: 10px 0;
+}
+.app .frame{
+  width: 100%;
+  border:2px solid #000;
+}
+.app .CaptureBtn {
+  padding: 15px;
+  font-size: 1.1rem;
+  display: block;
+  margin: 5px auto;
+  border-radius: 5px;
+  cursor: pointer;
+  outline: none;
+  transition: 0.3s;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+.app .CaptureBtn:hover {
+  background-color: #444;
+  color: #fff;
+  transform: scale(1.1);
+}

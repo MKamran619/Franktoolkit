@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Capture X,Y coordinates from uploaded graphs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <!-- bootstrap link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+    nav{
+      background:#046A38;
+    }
+    .heading{
+      margin-right: 350px;
+      margin-left: 25%;
+      width:100%;
+      font-size: 2.5rem;
+    }
+    .home-tag{
+    margin-top:10px;
+    margin-left: 50px;
+    font-size: 2rem;
+    }
+    h1{
+      text-align: center;
+      padding: 50px;
+    }
+    img {
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg   navbar-dark">
+   <ul class="navbar-nav mr-auto">
+   <li class="nav-item active">
+     <a class="nav-link heading" href="#">Prof. Fedel’s Toolkit<span class="sr-only">(current)</span></a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link home-tag" href="../index.html">Home</a>
+   </li>
+   <li class="nav-item">
+      <a class="nav-link home-tag" href="../contact.html">contact us</a>
+   </li>
+
+  </ul>
+</nav>
+
+<h1>Plot coordinates From Graph</h1>
+<div class="container pt-4 mt-4 pb-4 mb-4">
+
+        <h3>Load image of x,y plot, then click on points to get coordinates</h3>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="custom-file mt-3 mb-3">
+                <input type="file" class="custom-file-input" id="imgInp">
+                <label class="custom-file-label" for="customFile">Custom file upload</label>
+            </div>
+        </div>
+    </div>
+
+      <img class="img-fluid" id="myImage" src="#" alt="Your image will appear here"/>
+
+     <br>
+
+     <div class="row mt-4">
+
+
+
+         <div class="col-md-6">
+            <div class="form-group">
+                <textarea class="form-control" rows="10" id="output"></textarea>
+             </div>
+         </div>
+
+         <div class="col-md-6">
+            <div class="form-group">
+                <button class="btn btn-primary btn-sm" id="generate-csv">SAVE</button>
+                <button class="btn btn-danger btn-sm" id="clear-output">CLEAR</button>
+             </div>
+         </div>
+     </div>
+
+     <br>
+</div>
+
+<script>
+var rows = [];
+function FindPosition(oElement)
+{
+  if(typeof( oElement.offsetParent ) != "undefined")
+  {
+    for(var posX = 0, posY = 0; oElement; oElement = oElement.offsetParent)
+    {
+      posX += oElement.offsetLeft;
+      posY += oElement.offsetTop;
+    }
+      return [ posX, posY ];
+    }
+    else
+    {
+      return [ oElement.x, oElement.y ];
+    }
+}
+
+function GetCoordinates(e)
+{
+    // DRAW DOTS
+    mouseX = e.pageX;
+    mouseY = e.pageY;
+    //alert(mouseX + ' ' + mouseY);
+    var color = 'black';
+    var size = '5px';
+    $("body").append(
+        $('<div></div>')
+            .css('position', 'absolute')
+            .css('top', mouseY + 'px')
+            .css('left', mouseX + 'px')
+            .css('width', size)
+            .css('height', size)
+            .css('background-color', color)
+    );
+    // ../ DRAW DOTS
+  var PosX = 0;
+  var PosY = 0;
+  var ImgPos;
+  ImgPos = FindPosition(myImg);
+  if (!e) var e = window.event;
+  if (e.pageX || e.pageY)
+  {
+    PosX = e.pageX;
+    PosY = e.pageY;
+  }
+  else if (e.clientX || e.clientY)
+    {
+      PosX = e.clientX + document.body.scrollLeft
+        + document.documentElement.scrollLeft;
+      PosY = e.clientY + document.body.scrollTop
+        + document.documentElement.scrollTop;
+    }
+  PosX = PosX - ImgPos[0];
+  PosY = PosY - ImgPos[1];
+  var imageHeight = document.querySelector("#myImage").clientHeight;
+  PosY = imageHeight - PosY;
+    rows.push([PosX, PosY]);
+    var previousHtml = $('#output').val();
+    previousHtml += PosX + ',' + PosY + '\n';
+    $('#output').val(previousHtml);
+
+    var textareaEl = document.getElementById('output');
+    textareaEl.scrollTop = textareaEl.scrollHeight;
+}
+
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#myImage').attr('src', e.target.result);
+        }
+
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+
+$("#imgInp").change(function(){
+    readURL(this);
+});
+
+$('#clear-output').click(function() {
+    $('#output').val('');
+    rows = [];
+});
+
+var myImg = document.getElementById("myImage");
+myImg.onmousedown = GetCoordinates;
+
+$('#generate-csv').click(function() {
+    var coordinates = $('#output').val();
+    let csvContent = "data:text/csv;charset=utf-8,X,Y\n"
+    + rows.map(e => e.join(",")).join("\n");
+
+    var encodedUri = encodeURI(csvContent);
+    window.open(encodedUri);
+});
+
+</script>
+</body>
+</html>

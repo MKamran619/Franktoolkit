@@ -1,0 +1,97 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 75%;
+    float: left;
+}
+.app .images {
+    position: relative;
+}
+.app .images img{
+    width: 200px;
+    position: absolute;
+    top: 0;
+    left:50%;
+    transform: translateX(-50%);
+    display: none;
+}
+.app .images img:nth-of-type(0){
+    opacity: 1;
+    z-index: 1;
+}
+.app .images img:nth-of-type(1){
+    opacity:.8;
+    z-index: 2;
+}
+.app .images img:nth-of-type(2){
+    opacity: .8;
+    z-index: 3;
+}
+.app .images img:nth-of-type(3){
+    opacity: .8;
+    z-index: 4;
+}
+.app .images img:nth-of-type(4){
+    opacity: .8;
+    z-index: 5;
+}
+.app .images img:nth-of-type(5){
+    opacity: .8;
+    z-index: 6;
+}
+.app .images img:nth-of-type(6){
+    opacity: .8;
+    z-index: 7;
+}
+.app .images img:nth-of-type(7){
+    opacity: 1;
+    z-index: 8;
+}
+.app .images img:nth-of-type(8){
+    opacity: 1;
+    z-index: 9;
+}
+.btn{
+    width:32%;
+    padding: 10px;
+}
+.rightSidebar{
+    width:23%;
+    float: left;
+    padding: 15px 12px;
+}
+
+ .upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .btncus {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 8px 20px;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  .buttons{
+    margin-bottom: 30px;
+  }

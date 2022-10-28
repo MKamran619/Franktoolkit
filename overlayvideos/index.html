@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FrugalProf's Video Overlay Page</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- bootstrap link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <ul class="navbar-nav mr-auto">
+         <li class="nav-item active">
+           <a class="nav-link heading" href="#">Prof. Fedel’s Toolkit<span class="sr-only">(current)</span></a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link home-tag" href="../index.html">Home</a>
+         </li>
+         <li class="nav-item">
+            <a class="nav-link home-tag" href="../contact.html">contact us</a>
+         </li>
+
+      </ul>
+    </nav>
+
+        <h1>Overlay Videos</h1>
+    <div class="app">
+      <div class="header">
+        <div class="load-controls">
+          <div class="btn-group">
+            <label for="file-1">
+              <button class="loadBtn disabled">
+                Load Video 1
+              </button>
+            </label>
+            <input
+              type="file"
+              id="file-1"
+              name="files[]"
+              style="display: none;"
+              accept=".mp4"
+            />
+          </div>
+          <div class="btn-group">
+            <label for="file-2">
+              <button class="loadBtn disabled">
+                Load Video 2
+              </button>
+            </label>
+            <input
+              type="file"
+              id="file-2"
+              name="files[]"
+              style="display: none;"
+              accept=".mp4"
+            />
+          </div>
+          <div class="btn-group">
+            <label for="file-3">
+              <button class="loadBtn disabled">
+                Load Video 3
+              </button>
+            </label>
+            <input
+              type="file"
+              id="file-3"
+              name="files[]"
+              style="display: none;"
+              accept=".mp4"
+            />
+          </div>
+        </div>
+        <div class="opacity-controls">
+          <div class="slidecontainer hide">
+            <input
+              type="range"
+              min="1"
+              max="100"
+              value="100"
+              class="slider"
+              id="Slide_Opacity"
+            />
+          </div>
+        </div>
+        <div class="drag-controls">
+          <button class="dragBtn">Drag Video 1</button>
+          <button class="dragBtn">Drag Video 2</button>
+          <button class="dragBtn">Drag Video 3</button>
+        </div>
+      </div>
+      <div class="main"></div>
+    </div>
+    <script src="./js/script.js"></script>
+  </body>
+</html>

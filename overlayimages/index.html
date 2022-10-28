@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Image Overlay Page</title>
+  <link rel="stylesheet" href="./css/GraphOverlaystyle.css" />
+  <link rel="stylesheet" href="./css/cropImageModalStyle.css">
+  <link rel="stylesheet" href="./css/imagecropper.min.css">
+  <!-- bootstrap link -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  <!-- CDN for production -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body onload="myFunction()">
+
+
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link heading" href="#">Prof. Fedel’s Toolkit<span class="sr-only">(current)</span></a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link home-tag" href="../index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link home-tag" href="../contact.html">contact us</a>
+        </li>
+
+      </ul>
+
+</nav>
+
+<h1> OverLay Image</h1>
+  <div class="app" style="display: flex">
+    <div class="header">
+      <div class="loadBtns">
+        <div class="btn-group">
+          <label for="file-1">
+            <button class="btn" data-class='img1' style="pointer-events:none;">Load Background Image</button>
+          </label>
+          <input type="file" id="file-1" name="files[]" style="display: none;" />
+        </div> <br>
+        <div class="btn-group">
+          <div class="">
+            <label for="file-2">
+              <button class="btn js-loadBtns__fg-image" data-class='img2' style="pointer-events:none;">Load Overlay
+                Image</button>
+            </label>
+            <input type="file" id="file-2" name="files[]" style="display: none;" />
+          </div>
+
+          <div class="group1" style="background-color:rgb(241, 240, 240);font-family: arial, helvetica, sans-serif; font-size: 14px;padding: 1rem; width: 100%; margin-top:70px;">
+             <h4>Note:</h4>
+            <b>Move:</b> Double-click image/left mouse button<br><br>
+            <b>Resize:</b> Click and drag 2 lines in lower right corner of image<br><br>
+            <b>Opacity:</b> Top slider<br><br>
+            <b>Rotate:</b> Shift-left mouse button or bottom slider<br>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="main js-images-container"></div>
+  </div>
+  <!-- Crope image model -->
+  <div id="cropImageModal" class="modal">
+    <span onclick="closeModal()" class="close" title="Close Modal">×</span>
+    <form class="modal-content" action="/action_page.php">
+      <div class="container">
+        <div id="containerImage" class="container__image"></div>
+        <div class="btn-list">
+          <button type="button" onclick="closeModal()" class="cancelbtn">Cancel</button>
+          <button type="button" onclick="cropImage()" class="cropbtn">Crop</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- /Crope image model -->
+  <!-- Controls -->
+  <div class="control-actions-list"></div>
+  <!-- /Controls -->
+
+  <!-- cropper -->
+  <script src="./js/imagecropper.min.js"></script>
+  <script src="./js/cropImage.js"></script>
+  <!-- /cropper -->
+  <script src="./js/graphOverlayscript.js"></script>
+</body>
+
+</html>

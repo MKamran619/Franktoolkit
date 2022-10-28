@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Angle Generator DEMO</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <!-- link of bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  </head>
+  <body class="abc" onmousemove="try{mouse(event)}catch(err){}">
+    <br>
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link heading" href="#">Prof. Fedel’s Toolkit<span class="sr-only">(current)</span></a>
+    </li>
+
+      <li class="nav-item">
+        <a class="nav-link home-tag" href="../index.html">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link home-tag" href="../contact.html">contact us</a>
+      </li>
+
+    </ul>
+
+</nav>
+    <center>
+	<img src="LOGO3.png" width="400">
+	 <div style="margin: 0;width:1000px;" id="con">
+        <!-- SETTINGS -->
+        <div style="float:left;display:inline-block;">
+          <button class="abc" style="visibility:hidden;"> a</button><span></span><br><br>
+
+          <div style="border-radius:5px;border:1px solid black;padding:5px;background-color:#ededed;">
+            <h4>Modes</h4>
+            <button onclick="setmode('v')">View Random</button><span></span><br><br><button onclick="setmode('c')">Create and Measure Angles</button><span></span><br><br><button onclick="setmode('q')">Quiz Myself</button>
+            <br>
+            <h4>Toggle</h4>
+            <button class="abc" id="disang" onclick="displayangle()">Angles</button>
+
+            <button class="abc"  onclick="toggle()">Gridlines</button>
+            <hr style="margin: 21px 0px;">
+			<b>Background Image</b>
+			<br />
+            <!-- file upload -->
+            <label for="file" id="labelfile">
+              Upload <i class="fa fa-upload"></i>
+            </label>
+            <input type="file" onchange="read()" id="file" accept="image/png, image/jpeg" class="abc">
+
+            <tag><span style="padding:2px;"> </span></tag>
+
+            <button class="abc" onclick="removeback()"> <i class="fa fa-close"></i></button>
+
+            <button class="abc" onclick="toggleflip()">Flip <i class="fa fa-arrows-h"></i> </button>
+            <br>
+          </div>
+        </div>
+        <div style="display:inline-block;padding: 0px 10px;float:left;"><span></span></div>
+        <!-- CANVAS -->
+        <div style="display:inline-block;padding:0px;float:left;">
+          <button onclick="genrandom()" class="abc" >Generate Random Angles</button><span></span><br><br>
+          <canvas id="myCanvas" class="abc" ></canvas><br>
+
+        </div>
+        <div style="display:inline-block;padding: 0px 10px;float:left;"><span></span></div>
+        <!-- GUESS -->
+        <div style="display:inline-block;float:left;" id="guess">
+          <br><br>
+          <h4 id="usertxt">Estimate the following</h4>
+          <table class="displayoptions">
+            <tr>
+              <td>Knee Angle</td>
+              <td><input id="kneeguess" \></td>
+            </tr>
+            <tr>
+              <td>Ankle Angle</td>
+              <td><input id="ankleguess" \></td>
+            </tr>
+          </table>
+          <tag id="viewtxt" style="display:none;">Click on the Angles button to view or hide angles</tag>
+          <div class="displayoptions">
+            <input type="radio" name="typeof" value="Dorsiflexion"> Dorsiflexion<br>
+            <input type="radio" name="typeof" value="female"> Plantarflexion<br>
+          </div>
+          <br>
+          <button class="abc" id="angcreate" onclick="angcreate()" style="display:none;">Create Angle</button>
+          <div id="quiz">
+            <button class="abc" id="discheck" onclick="check()">Check</button>
+
+            <!-- TABLE -->
+
+            <h4>Answers</h4>
+            <table id="res" class="abc">
+              <tr>
+                <th>n = <span id="guesses">0</span></th>
+                <th>Correct +/- 5°</th>
+                <th>Correct +/- 10°</th>
+              </tr>
+              <tr>
+                <td>Knee</td>
+                <td id="k5c"><span id="k5">0 / 0%</span></td>
+                <td id="k10c"><span id="k10">0 / 0%</span></td>
+              </tr>
+              <tr>
+                <td>Ankle</td>
+                <td id="a5c"><span id="a5">0 / 0%</span></td>
+                <td id="a10c"><span id="a10">0 / 0%</span></td>
+              </tr>
+            </table>
+          </div>
+          <br><br><button type="button" onclick="capture_screen()">Capture Screenshot & Save</button>
+        </div>
+      </div>
+      <br>
+
+    </center>
+	<font-family: arial>Note: Scrolling on page using touchpad may disable functions</font>
+
+    <script src="script.js"></script>
+	  <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/608267/t/6"></script>
+    <script type="text/javascript">
+      function capture_screen(){
+        var canblob = document.getElementById('myCanvas');
+        var imagename = Math.floor((Math.random() * 10000) + 1);
+        image = canblob.toDataURL("image/png").replace("image/png", "image/octet-stream");
+        var link = document.createElement('a');
+        link.href = image;
+        link.download = "graph"+imagename+".png";
+        link.innerHTML = 'Download';
+        link.click();
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Overlay Page</title>
+    <link rel="stylesheet" href="./css/GraphOverlaystyle.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body onload="myFunction()">
+    <a href="../">Home</a>
+    <div class="app" style="display: flex">
+      <div class="header" style="width: 10vw;">
+        <div class="loadBtns">
+            <div class="btn-group">
+                <label for="file-1">
+                    <button class="btn" data-class='img1' style="pointer-events:none;">Load Background Image</button>
+                </label>
+                <input type="file" id="file-1" name="files[]" style="display: none;" />
+            </div>
+            <div class="btn-group">
+                <label for="file-2">
+                    <button class="btn" data-class='img2' style="pointer-events:none;">Load Overlay Image</button>
+                </label>
+                <input type="file" id="file-2" name="files[]" style="display: none;" />
+                <div style="font-family: arial, helvetica, sans-serif; font-size: 12px;">
+                    <br><br>
+                <b>Move:</b> Double-click image/left mouse button<br><br>
+                <b>Resize:</b> Click and drag 2 lines in lower right corner of image<br><br>
+                <b>Opacity:</b> Top slider<br><br>
+                <b>Rotate:</b> Shift-left mouse button or bottom slider<br>
+                </div>
+            </div>
+        </div>
+
+      </div>
+      <div class="main" style="width: 90vw;"></div>
+    </div>
+  </body>
+  <script src="./js/GraphOverlayscript.js"></script>
+  <script>
+   
+<!--black21s original -->
+<!--Shanali314 update 11/22/2020-->
+</script>
+</html>

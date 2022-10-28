@@ -1,0 +1,101 @@
+nav{
+  background:#046A38;
+}
+.heading{
+  margin-right: 350px;
+  margin-left: 25%;
+  width:100%;
+  font-size: 2.5rem;
+}
+.home-tag{
+margin-top:10px;
+margin-left: 50px;
+font-size: 2rem;
+}
+h1{
+  text-align: center;
+  padding: 30px;
+}
+.home-img{
+/* opacity: .9; */
+display: inline-block;
+position: absolute;
+margin-top: 90px;
+}
+
+#leg{
+    position: absolute;
+    width: 180px;
+    height: 400px;
+    left: 300px;
+}
+#device{
+    position: absolute;
+    width: 50px;
+    height: 140px;
+    opacity: 0.8;
+    resize: both;
+    display : inline-block;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 1000;
+}
+#device img{
+    width: 95%;
+    height: 95%;
+}
+#arrow{
+    position: absolute;
+    width: 50px;
+    height: 140px;
+    top: 300px;
+    resize: both;
+    display : inline-block;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 1000;
+}
+#arrow img{
+    width: 95%;
+    height: 95%;
+}
+#save{
+    /* position: absolute; */
+    width: 150px;
+    height:30px;
+    margin-top: 10px;
+}
+#imagesContainer{
+    position: relative;
+    display: inline-block;
+    border: 1px solid black;
+    width: 550px;
+    height: 470px;
+
+    margin-top: 50px;
+    margin-left: 10px;
+}
+
+#output{
+    border: 1px solid blue;
+    /* position: fixed; */
+    position: absolute;
+    margin-top:290px;
+    margin-left: 60px
+    display:inline-block;
+    width: 500px;
+    height: 470px;
+    left: 750px;
+    top : 0px;
+}
+
+#browseButtons{
+    /* position: fixed; */
+    width: 100px;
+    height: 200px;
+    font-size: 0.9rem;
+    margin-left: 20px;
+    margin-bottom: 100px;
+    display:inline-block;
+    /* background-color: red; */
+}

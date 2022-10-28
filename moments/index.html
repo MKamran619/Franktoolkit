@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Robot Angle</title>
+   <link href="RobotStyle20200109.css" rel="stylesheet" type="text/css" />
+   <!-- bootstrap link -->
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </head>
+  <body class="abc" onmousemove="try{mouse(event)}catch(err){}">
+    <nav class="navbar navbar-expand-lg   navbar-dark">
+     <ul class="navbar-nav mr-auto">
+     <li class="nav-item active">
+       <a class="nav-link heading" href="#">Prof. Fedel’s Toolkit<span class="sr-only">(current)</span></a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link home-tag" href="../index.html">Home</a>
+     </li>
+
+     <li class="nav-item">
+        <a class="nav-link home-tag" href="../contact.html">contact us</a>
+     </li>
+
+    </ul>
+  </nav>
+
+
+    <center>
+	<img src="Jointangle Logo-WhitBG-02.png" width="250">
+	<br>
+      <div style="margin-left:calc(50% - 300px);width:1000px;margin-right:calc(50% + 5000px);">
+        <div class="abc" style="width: 400px">
+          <canvas id="myCanvas" class="abc" ></canvas>
+        </div>
+        <div class="abc" style="height:440px;width:30px;"></div>
+        <div class="abc" style="text-align:left;">
+
+          <b>Toggle</b><br><br>
+          <button class="abc" onclick="showKneeE=!showKneeE">Knee Extension</button><br><br>
+          <button class="abc" onclick="showRope=!showRope">Rope</button><br><br>
+          <button class="abc" onclick="showInternal=!showInternal">Internal Moment Arm</button><br><br>
+          <button class="abc" onclick="showTorso=!showTorso">Torso</button><br><br>
+          <button class="abc" onclick="showWeight=!showWeight">Torso Weight line</button><br><br>
+          <button class="abc" onclick="showExternal=!showExternal">External Moment arm</button>
+          <br><br>
+          <input type="checkbox" id="resize" name="resize" value="resize">Resize?<br>
+        </div>
+      </div>
+      <b>Knee Angle</b><br><br>
+      <input type="range" min="0" max="135" value="90" class="slider" id="angle">
+      <span id="output"></span>°
+    </center>
+
+     <a href='https://writingmasterthesis.com/'>template master's thesis</a> <script type='text/javascript' src='https://www.freevisitorcounters.com/auth.php?id=c350ba032d02ccaa45537503eb9223603a6cf877'></script>
+<script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/762808/t/1"></script>
+    <script src="RobotScript20200109.js"></script>
+
+
+  </body>
+</html>

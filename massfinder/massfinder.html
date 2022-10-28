@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+<head><title>default</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="styles.css">
+<!-- bootstrap link -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+
+    <nav class="navbar navbar-expand-lg   navbar-dark">
+     <ul class="navbar-nav mr-auto">
+     <li class="nav-item active">
+       <a class="nav-link heading" href="#">Prof. Fedel’s Toolkit<span class="sr-only">(current)</span></a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link home-tag" href="../index.html">Home</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link home-tag" href="../contact.html">contact us</a>
+     </li>
+
+    </ul>
+  </nav>
+
+
+
+<h1>Center of Mass Finder</h1>
+
+
+
+   <div id="drop-area">
+     <form class="my-form">
+       <p>Upload an image file by dragging and dropping onto the dashed region</p>
+       <input type="file" id="fileElem" multiple accept="image/*" onchange="handleFiles(this.files)">
+       <label class="button" for="fileElem">Select some files</label>
+       <label class="button" onclick="calculateCenter()">Calculate the Center of Mass</label><br>
+       <span id="ii"></span><br>
+       <span id="cm"></span>
+     </form>
+     <canvas id="canvas"></canvas>
+   </div>
+
+
+<script src="htmlgen.js"></script>
+<script src="main.js"></script>
+</body>

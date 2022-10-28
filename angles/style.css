@@ -1,0 +1,115 @@
+.abc body {margin:0; font-family: monospace}
+
+.abc button {
+  border:none;
+  outline:none;
+  background-color: #008bdb;
+  color:white;
+  border-radius: 10px;
+  padding:10px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.abc button:hover {
+  background-color:white;
+  border:1px solid #008bdb;
+  padding:9px;
+  color:#008bdb;
+  transition-duration: 0.5s;
+}
+nav{
+  background:#046A38;
+}
+.heading{
+  margin-right: 350px;
+  margin-left: 25%;
+  width:100%;
+  font-size: 2.5rem;
+}
+.home-tag{
+margin-top:10px;
+margin-left: 50px;
+font-size: 2rem;
+}
+h1{
+  text-align: center;
+  padding: 50px;
+}
+img{
+  margin: 20px;
+}
+
+.abc canvas {
+  border:1px solid black;
+  border-radius: 5px;
+}
+
+.abc span {
+  padding:5px;
+}
+.abc #con {overflow: hidden;}
+
+.abc #res {
+  text-align: left;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding:4px;
+}
+.abc #res th {
+  padding:5px;
+  text-align: left;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.abc #res td {
+  padding:5px;
+  text-align: left;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.abc .inv {
+  background-color:white;
+  border:1px solid grey;
+  padding:9px;
+  color:grey;
+  transition-duration: 0.5s;
+  cursor: default;
+}
+.abc .inv:hover {
+  background-color:white;
+  border:1px solid grey;
+  padding:9px;
+  color:grey;
+  transition-duration: 0.5s;
+  cursor: default;
+}
+
+.abc #file {
+  display:none;
+}
+
+#labelfile {
+  border:none;
+  outline:none;
+  background-color: #008bdb;
+  color:white;
+  border-radius: 10px;
+  padding:10px;
+  transition-duration: 0.5s;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-family: arial, sans-serif;
+}
+
+#guess {text-align:left;}
+/*
+#k5 {color:white;}
+#a5 {color:white;}
+#k10 {color:white;}
+#a10 {color:white;}*/
+#k5c {background-image:linear-gradient(salmon 0, salmon 100%);}
+#a5c {background-image:linear-gradient(salmon 0, salmon 100%);}
+#k10c {background-image:linear-gradient(salmon 0, salmon 100%);}
+#a10c {background-image:linear-gradient(salmon 0, salmon 100%);}

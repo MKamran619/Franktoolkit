@@ -1,0 +1,337 @@
+<html>
+    <head>
+
+      <link rel="stylesheet" href="styles.css">
+      <!-- link of bootstrap -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Socket Alignment Visualizer</title>
+
+
+    </head>
+
+    <body id="main">
+      <nav class="navbar navbar-expand-lg navbar-dark ">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link heading" href="#">Prof. Fedel’s Toolkit<span class="sr-only">(current)</span></a>
+      </li>
+
+        <li class="nav-item">
+          <a class="nav-link home-tag" href="../index.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link home-tag" href="../contact.html">contact us</a>
+        </li>
+      </ul>
+
+</nav>
+   <h1>Socket Alignment Visualizer</h1>
+        <div id="imagesContainer">
+            <img src="leg.png" id="leg">
+            <div id="device" >
+                <img src="device.png" id="devicePic">
+            </div>
+            <div id="arrow">
+                <img src="arrow.png" id="arrowPic">
+            </div>
+
+        </div>
+        <div id="browseButtons">
+            <p>Select Images:</p>
+            <label for="imageA">Main Image</label>
+            <input type="file" value="Image A" id="imageA" style="width: 90px;" onchange="changeImageA(this)">
+            <br> <label for="imageB">Overlay 1</label>
+            <input type="file" value="Image B" id="imageB" style="width: 90px;" onchange="changeImageB(this)">
+            <br> <label for="imageC">Overlay 2</label>
+            <input type="file" value="Image C" id="imageC" style="width: 90px;" onchange="changeImageC(this)">
+            <br> <input type="button" value="Save" id="save" style="width: 90px; top: 200px; left: 0px;" onclick="capture()">
+        </div>
+        <div id="output">
+            <b>Output</b>
+        </div>
+        <div id="sliders">
+
+                <b>Move:</b> Click and drag overlay image<br>
+                <b>Resize:</b> Click and drag 2 lines in lower right corner of image<br>
+                <b>Rotate:</b> Double-click on image and use slider/double-click again to release<br>
+            <input type="range" min="1" max="360" value="180" class="slider" id="rotation">
+            <input type="range" min="1" max="360" value="180" class="slider" id="rotation2">
+
+        </div>
+
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <script>
+
+        rotation = document.getElementById("rotation");
+        rotation.disabled = true;
+        rotation2 = document.getElementById("rotation2");
+        rotation2.disabled = true;
+        function capture() {
+            if(document.getElementById("output").childElementCount > 1)
+                document.getElementById("output").removeChild(document.getElementById("output").lastChild);
+            html2canvas(document.getElementById("imagesContainer")).then(function(canvas) {
+                document.getElementById("output").appendChild(canvas);
+
+            });
+        }
+
+        function changeImageA()
+        {
+
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("imageA").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                leg.src = oFREvent.target.result;
+                leg.onload = function()
+                {
+                    var rat = parseFloat(parseInt(leg.naturalWidth) / parseInt(leg.naturalHeight));
+                    if(rat > 1.2)
+                    {
+                        leg.style.width = 400;
+                        leg.style.height = 180;
+                        leg.style.left = 100;
+                    }
+                    if(rat < 0.8)
+                    {
+                        leg.style.width = 180;
+                        leg.style.height = 400;
+                        leg.style.left = 300;
+                    }
+                    if(rat > 0.8 && rat < 1.2)
+                    {
+                        leg.style.width = 300;
+                        leg.style.height = 300;
+                        leg.style.left = 200;
+                    }
+                };
+
+            };
+        }
+        function changeImageB()
+        {
+
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("imageB").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                device.src = oFREvent.target.result;
+                device.onload = function()
+                {
+                    var rat = parseFloat(parseInt(device.naturalWidth) / parseInt(device.naturalHeight));
+                    if(rat > 1.3)
+                    {
+                        device.style.width = 140;
+                        device.style.height = 50;
+                    }
+                    if(rat < 0.7)
+                    {
+                        device.style.width = 50;
+                        device.style.height = 140;
+                    }
+                    if(rat > 0.7 && rat < 1.3)
+                    {
+                        device.style.width = 100;
+                        device.style.height = 100;
+                    }
+                };
+            };
+        }
+        function changeImageC()
+        {
+
+            var oFReader = new FileReader();
+            oFReader.readAsDataURL(document.getElementById("imageC").files[0]);
+
+            oFReader.onload = function (oFREvent) {
+                arrow.src = oFREvent.target.result;
+                device.onload = function()
+                {
+                    var rat = parseFloat(parseInt(arrow.naturalWidth) / parseInt(arrow.naturalHeight));
+                    if(rat > 1.3)
+                    {
+                        arrow.style.width = 140;
+                        arrow.style.height = 50;
+                    }
+                    if(rat < 0.7)
+                    {
+                        arrow.style.width = 50;
+                        arrow.style.height = 140;
+                    }
+                    if(rat > 0.7 && rat < 1.3)
+                    {
+                        arrow.style.width = 100;
+                        arrow.style.height = 100;
+                    }
+                };
+            };
+        }
+        deviceRotateOn = false;
+        arrowRotateOn = false;
+        device = document.getElementById("devicePic");
+        deviceContainer = document.getElementById("device");
+
+        var clicks = 0; delay = 400;
+        device.onmousedown = function(event) {
+            event.preventDefault();
+            clicks++;
+
+            setTimeout(function(){
+                clicks = 0;
+
+            }, delay);
+            if(clicks == 2 && !deviceRotateOn)
+            {
+                device.style.border = "solid 1px red";
+                deviceRotateOn = true;
+                rotation.disabled = false;
+                clicks = 0;
+                return;
+            }
+            else if(clicks == 2 && deviceRotateOn)
+            {
+                device.style.border = "none";
+                deviceRotateOn = false;
+                rotation.disabled = true;
+                clicks = 0;
+                return;
+            }
+            if(deviceRotateOn)
+            {
+
+                return;
+            }
+            else
+            {
+                deviceMouseDownMove(event);
+            }
+
+        };
+        function deviceMouseDownMove(event)
+        {
+
+            let shiftX = event.clientX - deviceContainer.getBoundingClientRect().left;
+            let shiftY = event.clientY - deviceContainer.getBoundingClientRect().top;
+            device.style.position = 'absolute';
+            device.style.zIndex = 1000;
+
+            deviceContainer.append(device)
+
+            function moveAt(pageX, pageY) {
+                deviceContainer.style.left = pageX - shiftX - 10 + 'px';
+                deviceContainer.style.top = pageY - shiftY - 10 + 'px';
+            }
+
+            moveAt(event.pageX, event.pageY);
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            device.onmouseup = function() {
+
+                document.removeEventListener('mousemove', onMouseMove);
+                device.onmouseup = null;
+
+            };
+        }
+        device.ondragstart = function(){
+            return false;
+        };
+
+        arrow = document.getElementById("arrowPic");
+        arrowContainer = document.getElementById("arrow");
+        arrow.onmousedown = function(event) {
+            event.preventDefault();
+            clicks++;
+
+            setTimeout(function(){
+                clicks = 0;
+
+            }, delay);
+            if(clicks == 2 && !arrowRotateOn)
+            {
+                arrow.style.border = "solid 1px red";
+                rotation2.disabled = false;
+                arrowRotateOn = true;
+                clicks = 0;
+                return;
+            }
+            else if(clicks == 2 && arrowRotateOn)
+            {
+                arrow.style.border = "none";
+                rotation2.disabled = true;
+                arrowRotateOn = false;
+                clicks = 0;
+                return;
+            }
+            if(arrowRotateOn)
+            {
+
+                return;
+            }
+            else
+            {
+
+                arrowMouseDownMove(event);
+            }
+
+        };
+        function arrowMouseDownMove(event)
+        {
+            let shiftX = event.clientX - arrow.getBoundingClientRect().left;
+            let shiftY = event.clientY - arrow.getBoundingClientRect().top;
+            arrow.style.position = 'absolute';
+            arrow.style.zIndex = 1000;
+
+            arrowContainer.append(arrow)
+
+            function moveAt(pageX, pageY) {
+                arrowContainer.style.left = pageX - shiftX -10 + 'px';
+                arrowContainer.style.top = pageY - shiftY-10 + 'px';
+            }
+
+            moveAt(event.pageX, event.pageY);
+
+            function onMouseMove(event) {
+                moveAt(event.pageX, event.pageY);
+            }
+
+            document.addEventListener('mousemove', onMouseMove);
+
+            arrow.onmouseup = function() {
+                document.removeEventListener('mousemove', onMouseMove);
+                arrow.onmouseup = null;
+            };
+
+        }
+        arrow.ondragstart = function(){
+            return false;
+        };
+        leg.ondragstart = function(){
+            return false;
+        };
+
+        rotation.oninput = function()
+        {
+            deviceContainer.style.transform = "rotate("+parseInt(parseInt(this.value)-180)+"deg)";
+
+        }
+        rotation2.oninput = function()
+        {
+            arrowContainer.style.transform = "rotate("+parseInt(parseInt(this.value)-180)+"deg)";
+
+        }
+
+        function c(x){
+            document.getElementById("output").innerHTML = x;
+        }
+
+
+    </script>
+    </body>
+</html>

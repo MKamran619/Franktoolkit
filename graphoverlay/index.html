@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>black21s-GraphOverlayResize</title>
+    <link rel="stylesheet" href="GraphOverlaystyle.css" />
+  </head>
+  <body onload="myFunction()">
+    <div class="app">
+      <div class="header">
+        <div class="loadBtns">
+            <div class="btn-group">
+                <label for="file-1">
+                    <button class="btn" data-class='img1' style="pointer-events:none;">Load Graph 1</button>
+                </label>
+                <input type="file" id="file-1" name="files[]" style="display: none;" />
+            </div>
+            <div class="btn-group">
+                <label for="file-2">
+                    <button class="btn" data-class='img2' style="pointer-events:none;">Load Graph 2</button>
+                </label>
+                <input type="file" id="file-2" name="files[]" style="display: none;" />
+            </div>
+        </div>
+
+      </div>
+      <div class="main"></div>
+    </div>
+  </body>
+  <script src="GraphOverlayscript.js"></script>
+</html>
